@@ -3,24 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prepare": "husky",
-    "format": "prettier --write \"client/**/*.{js,jsx,json,css}\" \"services/**/*.{js,jsx,json}\"",
-    "format:check": "prettier --check \"client/**/*.{js,jsx,json,css}\" \"services/**/*.{js,jsx,json}\""
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "prettier": "^3.4.2",
-    "lint-staged": "^15.2.11"
-  },
-  "lint-staged": {
-    "*.{js,jsx,json,css}": [
-      "prettier --write"
-    ],
-    "client/**/*.{js,jsx,json,css}": [
-      "prettier --write"
-    ],
-    "services/**/*.{js,jsx,json}": [
-      "prettier --write"
-    ]
+    "prettier": "^3.4.2"
   }
 }
