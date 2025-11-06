@@ -10,7 +10,9 @@
     "build": "babel src --out-dir dist",
     "dev": "cross-env NODE_ENV=development babel src --out-dir dist --watch",
     "dev:run": "cross-env NODE_ENV=development nodemon ./dist/index.js",
-    "prod": "npm run build && cross-env NODE_ENV=production node ./dist/index.js"
+    "prod": "npm run build && cross-env NODE_ENV=production node ./dist/index.js",
+    "format": "prettier --write \"src/**/*.{js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,json}\""
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
