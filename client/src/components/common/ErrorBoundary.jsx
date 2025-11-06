@@ -1,20 +1,20 @@
-import { Component } from "react";
+import { Component } from 'react'
 
 class ErrorBoundary extends Component {
   constructor(props) {
-    super(props);
-    this.state = { hasError: false };
+    super(props)
+    this.state = { hasError: false }
   }
 
   static getDerivedStateFromError() {
-    return { hasError: true };
+    return { hasError: true }
   }
 
   render() {
     if (this.state.hasError) {
-      return <h1>This is a fallback screen of error boundary!!!</h1>;
+      return <h1>This is a fallback screen of error boundary!!!</h1>
     }
-    return this.props.children;
+    return this.props.children
   }
 }
-export default ErrorBoundary;
+export default ErrorBoundary

@@ -7,4 +7,8 @@ coverage
 *.log
 .env*
 .DS_Store
-
+package-lock.json
+package.json
+services/*/package-lock.json
+services/*/package.json
+.prettierrc.json
