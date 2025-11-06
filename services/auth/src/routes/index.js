@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ROUTES } from "../utils/constants.js";
+import { ROUTES } from "@utils/constants";
 
 const router = Router();
 
