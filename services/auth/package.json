@@ -6,22 +6,26 @@
   "author": "Mohit Joshi",
   "type": "module",
   "main": "index.js",
+  "sideEffects": false,
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "dev": "cross-env NODE_ENV=development babel src --out-dir dist --watch",
+    "build:prod": "cross-env NODE_ENV=production webpack",
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "dev:webpack": "cross-env NODE_ENV=development webpack --watch",
     "dev:run": "cross-env NODE_ENV=development nodemon ./dist/index.js",
-    "prod": "npm run build && cross-env NODE_ENV=production node ./dist/index.js",
+    "prod": "npm run build:prod && cross-env NODE_ENV=production node ./dist/index.js",
     "format": "prettier --write \"src/**/*.{js,json}\"",
     "format:check": "prettier --check \"src/**/*.{js,json}\""
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
+    "babel-loader": "^10.0.0",
     "babel-plugin-add-import-extension": "^1.6.0",
-    "babel-plugin-module-resolver": "^5.0.2",
     "cross-env": "^10.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
