@@ -1,12 +1,12 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import nodeExternals from 'webpack-node-externals'
+import path from 'path';
+import { fileURLToPath } from 'url';
+import nodeExternals from 'webpack-node-externals';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Default to development if NODE_ENV is not set
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
   mode: isProduction ? 'production' : 'development',
@@ -83,6 +83,6 @@ const config = {
       },
     ],
   },
-}
+};
 
-export default config
+export default config;

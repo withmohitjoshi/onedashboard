@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const SignIn = () => {
   const [state, setstate] = useState({
     email: '',
     password: '',
-  })
-  const { email, password } = state
+  });
+  const { email, password } = state;
   const handleOnChange = e => {
-    const { name, value } = e.target
-    setstate({ ...state, [name]: value })
-  }
+    const { name, value } = e.target;
+    setstate({ ...state, [name]: value });
+  };
   return (
     <div className="w-full flex items-center justify-center h-screen ">
       <form className="p-10 flex flex-col gap-6 rounded shadow bg-gray-800 text-white min-w-lg">
@@ -42,7 +42,7 @@ const SignIn = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

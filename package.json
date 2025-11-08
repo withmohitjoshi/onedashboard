@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "auth:dev": "cd services/auth && npm run dev",
+    "auth:prod": "cd services/auth && npm run prod",
+    "gcp": "git add . && git commit -m \"changes\" && git push"
   },
   "devDependencies": {
     "prettier": "^3.4.2"
