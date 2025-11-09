@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import { default as authRouter } from '@routes/auth';
 import { ROUTES } from '@utils/constants';
@@ -14,6 +15,12 @@ dotenv.config({ path: `.env.${env}` });
 async function main() {
   await connectToDB();
   const app = express();
+  app.use(
+    cors({
+      origin: '*',
+    }),
+  );
+
   app.use(express.json());
 
   // auth routes
