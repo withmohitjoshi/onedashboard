@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { ROUTES } from '@utils/constants';
-import User from '@models/user';
 import { getAuthRunning, login, getUserDetails, logout, signIn } from '@controllers/auth';
 const router = Router();
 

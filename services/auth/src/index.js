@@ -5,6 +5,7 @@ import cors from 'cors';
 import { default as authRouter } from '@routes/auth';
 import { ROUTES } from '@utils/constants';
 import { connectToDB } from '@utils/db';
+import { errorHandler } from './middlewares/errorHandler';
 
 // NODE_ENV is set via cross-env in the package.json scripts
 // Load environment variables based on the current NODE_ENV
@@ -25,6 +26,21 @@ async function main() {
 
   // auth routes
   app.use(ROUTES.AUTH, authRouter);
+
+  // error handler
+  app.use(errorHandler);
+
+  process.on('uncaughtException', err => {
+    console.error('Uncaught Exception:', err.message);
+    process.exit(1); // Exit to prevent an unstable state
+  });
+
+  // Handle unhandled promise rejections (async errors outside Express)
+  process.on('unhandledRejection', err => {
+    console.error('Unhandled Promise Rejection:', err.message);
+    process.exit(1);
+  });
+
   const PORT = process.env.PORT;
   app.listen(PORT, () => console.log(`Auth service is running on port ${PORT}`));
 }
