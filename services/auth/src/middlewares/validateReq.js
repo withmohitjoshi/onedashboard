@@ -1,4 +1,5 @@
 import { STATUS_CODES } from '@utils/constants';
+import { isDev } from '@utils/function';
 import { ApiError, ValidationError } from '@utils/structures';
 
 export function validateReq(schema, target = 'body') {
@@ -18,7 +19,7 @@ export function validateReq(schema, target = 'body') {
       throw new ValidationError({
         statusCode: STATUS_CODES.BAD_REQUEST,
         message: 'Invalid request body',
-        errors: error.details.map(detail => detail.message),
+        errors: isDev() ? error.details.map(detail => detail.message.toLocaleString()) : [],
       });
     }
 
