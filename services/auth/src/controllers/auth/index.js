@@ -11,9 +11,6 @@ export const signIn = asyncHandler(async (req, res) => {
   const email = body.email;
   const password = body.password;
 
-  if (!email || !password)
-    throw new ValidationError({ errors: ['email and password is required'] });
-
   if (!isValidStringWithRegex(EMAIL_REGEX, email))
     throw new ValidationError({ errors: ['email is invalid'] });
 

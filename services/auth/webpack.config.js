@@ -35,10 +35,11 @@ const config = {
   ],
   resolve: {
     alias: {
+      '@controllers': path.resolve(__dirname, 'src/controllers'),
+      '@middlewares': path.resolve(__dirname, 'src/middlewares'),
+      '@models': path.resolve(__dirname, 'src/models'),
       '@routes': path.resolve(__dirname, 'src/routes'),
       '@utils': path.resolve(__dirname, 'src/utils'),
-      '@controllers': path.resolve(__dirname, 'src/controllers'),
-      '@models': path.resolve(__dirname, 'src/models'),
     },
     extensions: ['.js', '.json'],
   },

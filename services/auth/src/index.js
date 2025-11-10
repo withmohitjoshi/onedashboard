@@ -5,7 +5,7 @@ import cors from 'cors';
 import { default as authRouter } from '@routes/auth';
 import { ROUTES } from '@utils/constants';
 import { connectToDB } from '@utils/db';
-import { errorHandler } from './middlewares/errorHandler';
+import { errorHandler } from '@middlewares/errorHandler';
 import { corsConfig } from '@utils/corsConfig';
 
 // NODE_ENV is set via cross-env in the package.json scripts
