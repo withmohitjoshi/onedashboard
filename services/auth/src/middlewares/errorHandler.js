@@ -1,5 +1,5 @@
 import { STATUS_CODES } from '@utils/constants';
-import { ApiError, ApiResponse } from '@utils/structures';
+import { isDev } from '@utils/function';
 
 export function errorHandler(err, _, res, __) {
   const statusCode = err.statusCode || STATUS_CODES.SERVER_ERROR;
@@ -7,6 +7,7 @@ export function errorHandler(err, _, res, __) {
   const success = err?.success || false;
   const errors =
     err?.errors?.length > 0 ? err.errors.map(e => e.toString().toLowerCase()) : undefined;
+  const stack = isDev() ? err?.stack : undefined;
   return res
     .status(statusCode)
     .json({
@@ -14,6 +15,7 @@ export function errorHandler(err, _, res, __) {
       message,
       success,
       errors,
+      stack,
     })
     .end();
 }

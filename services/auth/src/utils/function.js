@@ -7,8 +7,8 @@ export function isValidStringWithRegex(regex, str) {
   return regex.test(str);
 }
 
-export const isDev = process.env.NODE_ENV === 'development';
-export const isProd = process.env.NODE_ENV === 'production';
+export const isDev = () => process.env.NODE_ENV === 'development';
+export const isProd = () => process.env.NODE_ENV === 'production';
 
 export const asyncHandler = requestHandler => {
   return (req, res, next) => {

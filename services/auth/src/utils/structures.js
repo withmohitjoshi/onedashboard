@@ -2,7 +2,12 @@ import { STATUS_CODES } from './constants';
 import { isDev } from './function';
 
 export class ApiResponse {
-  constructor({ statusCode, data, message = 'success' }) {
+  /**
+   * @param {Object} object
+   * @param {number} object.statusCode - HTTP status code for the response
+   */
+  constructor(object) {
+    const { statusCode, data, message = 'success' } = object || {};
     this.statusCode = statusCode;
     this.data = data;
     this.message = message.toLowerCase();
@@ -11,12 +16,23 @@ export class ApiResponse {
 }
 
 export class ApiError extends Error {
-  constructor({
-    statusCode = STATUS_CODES.SERVER_ERROR,
-    errors = [],
-    message = 'something went wrong',
-    stack = '',
-  }) {
+  /**
+   * @typedef {Object} ApiErrorOptions
+   * @property {number} [statusCode=STATUS_CODES.SERVER_ERROR] - HTTP status code for the error
+   * @property {Array} [errors=[]] - Optional array of validation or domain errors
+   * @property {string} [message='something went wrong'] - Error message (will be lower-cased)
+   * @property {string} [stack=''] - Optional stack trace (used when isDev is true)
+   */
+  /**
+   * @param {ApiErrorOptions} [object]
+   */
+  constructor(object) {
+    const {
+      statusCode = STATUS_CODES.SERVER_ERROR,
+      errors = [],
+      message = 'something went wrong',
+      stack = '',
+    } = object || {};
     super(message.toLowerCase());
     this.statusCode = statusCode;
     this.data = null;
@@ -24,18 +40,22 @@ export class ApiError extends Error {
     this.success = false;
     this.errors = errors;
 
-    if (isDev) {
-      if (stack) {
-        this.stack = stack;
-      } else {
-        Error.captureStackTrace(this, this.constructor);
-      }
+    if (stack) {
+      this.stack = stack;
+    } else {
+      Error.captureStackTrace(this, this.constructor);
     }
   }
 }
 
 export class ValidationError extends ApiError {
-  constructor({ errors = [], message = 'invalid input' }) {
+  /**
+   * @param {Object} object
+   * @param {Array} [object.errors=[]] - Array of validation errors
+   * @param {string} [object.message='invalid input'] - Error message
+   */
+  constructor(object) {
+    const { errors = [], message = 'invalid input' } = object;
     super({
       statusCode: STATUS_CODES.BAD_REQUEST,
       message: message.toLowerCase(),
