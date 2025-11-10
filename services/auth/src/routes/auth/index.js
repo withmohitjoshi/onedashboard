@@ -4,8 +4,8 @@ import { getAuthRunning, login, getUserDetails, logout, signIn } from '@controll
 const router = Router();
 
 router.get('/', getAuthRunning);
-router.post(ROUTES.LOGIN, login);
 router.post(ROUTES.SIGNIN, signIn);
+router.post(ROUTES.LOGIN, login);
 router.post(ROUTES.LOGOUT, logout);
 router.post(ROUTES.GET_USER_DETAILS, getUserDetails);
 
