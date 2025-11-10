@@ -2,7 +2,7 @@ import { STATUS_CODES } from '@utils/constants';
 import { isDev } from '@utils/function';
 
 export function errorHandler(err, _, res, __) {
-  const statusCode = err.statusCode || STATUS_CODES.SERVER_ERROR;
+  const statusCode = err?.statusCode || STATUS_CODES.SERVER_ERROR;
   const message = err?.message || 'Something went wrong';
   const success = err?.success || false;
   const errors =
